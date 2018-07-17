@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;">
+			<div class="layui-row"> <span class="layui-breadcrumb"> <a href="../index.html">首页</a> <a href="#">师资管理</a><a href="teacher.html">师资力量</a> <a><cite>修改老师信息</cite></a> </span> </div>
+			<div class="layui-row">
+				<hr class="layui-bg-gray">
+			</div>
+			<div class="layui-row">
+				<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+					<legend>讲师基本信息</legend>
+				</fieldset>
+			</div>
+			<div class="layui-row">
+				<form class="layui-form layui-form-pane" action="">
+					<div class="layui-form-item">
+						<label class="layui-form-label">讲师姓名</label>
+						<div class="layui-input-inline">
+							<input id="tname" type="text" name="title" required lay-verify="required" placeholder="请输入讲师名称" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">讲师简介</label>
+						<div class="layui-input-block">
+							<textarea id="introduction" name="desc" required placeholder="请输入讲师简介" class="layui-textarea"></textarea>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="layui-row">
+				<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+					<legend>讲师图片</legend>
+				</fieldset>
+			</div>
+			<div class="layui-row">
+				<div class="layui-upload">
+					<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;"> 预览图：
+						<div class="layui-upload-list" id="teacherImagesPreview"></div>
+					</blockquote>
+					<button type="button" class="layui-btn" id="teacherImagesChoose"><i class="fa fa-file-image-o"></i> 选择图片</button>
+					<button class="layui-btn layui-btn-primary" lay-submit lay-filter="imageReset"><i class="fa fa-recycle"></i> 重置图片</button>
+				</div>
+			</div>
+			<div class="layui-row">
+				<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+					<legend>信息操作</legend>
+				</fieldset>
+			</div>
+			<div class="layui-row">
+				<button class="layui-btn" lay-submit lay-filter="teacherSubmit"><i class="fa fa-cloud-upload"></i> 提交信息</button>
+				<button class="layui-btn layui-btn-primary" lay-submit lay-filter="teacherReset"><i class="fa fa-recycle"></i> 重置信息</button>
+			</div>
+			</form>
+		</div>
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../js/urlParameter.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['element', 'form', 'upload'], function() {
+				var element = layui.element,
+					form = layui.form,
+					upload = layui.upload;
+
+				var tid = $.getUrlParam("id");
+				var qid = sessionStorage.getItem("qid");
+				var tphoto;
+				var teacherImage;
+
+				$.ajax({
+					url: "/neueduAdministrator/teacher/TeacherHandler_findTeacherById",
+					type: "post",
+					data: {
+						tid: tid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						$("#tname").val(data.tname);
+						$("#introduction").val(data.introduction);
+						tphoto = data.tphoto;
+						$('#teacherImagesPreview').append('<img height="80" width="80" src="' + data.tphoto + '" alt="' + data.tphoto + '" class="layui-upload-img">')
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				var uploadImages = upload.render({
+					elem: '#teacherImagesChoose' //绑定元素
+						,
+					url: '' //上传接口
+						,
+					accept: "images",
+					acceptMime: "image/*",
+					auto: false,
+					bindAction: "#teacherImagesUpload",
+					multiple: false,
+					size: 10240,
+					choose: function(obj) {
+						obj.preview(function(index, file, result) {
+							teacherImage = file;
+							//固定图片长宽
+							$('#teacherImagesPreview').append('<img height="50" width="50" src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+						});
+					},
+					done: function(res) {
+						//上传完毕回调
+					},
+					error: function() {
+						//请求异常回调
+						console.log('here');
+					}
+				});
+
+				form.on('submit(teacherSubmit)', function(data) {
+					var formData = new FormData();
+					//组装FormData
+					if($.isEmptyObject(teacherImage)) {
+						formData.append("imageChanged", false)
+						formData.append("tphoto", tphoto)
+					} else {
+						formData.append("imageChanged", true)
+					}
+					formData.append("qid", qid);
+					formData.append("tid", tid);
+					formData.append("tname", $("#tname").val())
+					formData.append("introduction", $("#introduction").val())
+					formData.append("teacherImage", teacherImage)
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/teacher/TeacherHandler_updateTeacher",
+						data: formData,
+						processData: false,
+						contentType: false,
+						dataType: "json",
+						success: function(data) {
+							alert(data.result);
+						}
+					});
+
+					return false;
+				});
+
+				form.on('submit(imageReset)', function(data) {
+					$("#teacherImagesPreview").empty();
+					teacherImage = null;
+					return false;
+				})
+				form.on('submit(teacherReset)', function(data) {
+					$("#teacherImagesPreview").empty();
+					teacherImage = null;
+					$("#tname").val("");
+					$("#introduction").val("");
+
+					return false;
+				})
+
+			});
+		</script>
+	</body>
+
+</html>

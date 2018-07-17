@@ -1,0 +1,2931 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<div class="layui-body">
+
+				<!-- 内容主体区域 -->
+				<div style="padding: 15px;">
+					<div class="layui-row"> <span class="layui-breadcrumb"> <a href="../index.html">首页</a> <a href="#">朋友圈管理</a> <a><cite>朋友圈评论管理</cite></a> </span> </div>
+					<div class="layui-row" id="top">
+						<hr class="layui-bg-gray">
+					</div>
+
+					<!-- 一条消息 -->
+					<div class="layui-row" height="50px">
+						<div class="layui-row">
+							<div class="layui-col-md1">
+								<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+							</div>
+							<div class="layui-col-md10">
+								<strong>Adair</strong>
+							</div>
+							<div class="layui-col-md1">
+								<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+								<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+							</div>
+						</div>
+
+						<div class="layui-row">
+							<div class="layui-col-md1">
+								&nbsp;
+							</div>
+							<div class="layui-col-md8">
+								<div class="layui-row">
+									君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+								</div>
+								<div class="layui-row">
+									<ul class="figure-list">
+										<li>
+											<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+												<a href="#"></a>
+											</figure>
+										</li>
+										<li>
+											<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+												<a href="#"></a>
+											</figure>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="layui-row">
+								<div class="layui-col-md1">
+									&nbsp;
+								</div>
+								<div class="layui-col-md11">
+									<div class="layui-collapse">
+										<div clasås="layui-colla-item">
+											<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+											<div class="layui-colla-content">
+												<div class="layui-row">
+													<font style="color:steelblue;">Black:</font>
+													Awesome!
+													<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<!-- /一条消息 -->
+
+							<div class="layui-row">
+								<hr class="layui-bg-gray">
+							</div>
+
+							<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+
+<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<!-- 一条消息 -->
+							<div class="layui-row" height="50px">
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+									</div>
+									<div class="layui-col-md10">
+										<strong>Adair</strong>
+									</div>
+									<div class="layui-col-md1">
+										<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+										<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+									</div>
+								</div>
+
+								<div class="layui-row">
+									<div class="layui-col-md1">
+										&nbsp;
+									</div>
+									<div class="layui-col-md8">
+										<div class="layui-row">
+											君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+										</div>
+										<div class="layui-row">
+											<ul class="figure-list">
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+												<li>
+													<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+														<a href="#"></a>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="layui-row">
+										<div class="layui-col-md1">
+											&nbsp;
+										</div>
+										<div class="layui-col-md11">
+											<div class="layui-collapse">
+												<div class="layui-colla-item">
+													<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+													<div class="layui-colla-content">
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+														<div class="layui-row">
+															<font style="color:steelblue;">Black:</font>
+															Awesome!
+															<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!-- /一条消息 -->
+									<div class="layui-row">
+										<hr class="layui-bg-gray">
+									</div>
+
+									<!-- 一条消息 -->
+									<div class="layui-row" height="50px">
+										<div class="layui-row">
+											<div class="layui-col-md1">
+												<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">
+											</div>
+											<div class="layui-col-md10">
+												<strong>Adair</strong>
+											</div>
+											<div class="layui-col-md1">
+												<a style="color:lightseagreen;" href="#"><i class="layui-icon layui-icon-edit fa-lg"></i></a>
+												<a style="color:lightseagreen;" href="#" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>
+											</div>
+										</div>
+
+										<div class="layui-row">
+											<div class="layui-col-md1">
+												&nbsp;
+											</div>
+											<div class="layui-col-md8">
+												<div class="layui-row">
+													君临城，红堡，铁王座<br> Kingslanding, Red Keep, Iron Throne
+												</div>
+												<div class="layui-row">
+													<ul class="figure-list">
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+														<li>
+															<figure style="background-image:url(../resource/image/1b6ad0b44aed2e739edb708e8501a18b87d6fa76.jpg)">
+																<a href="#"></a>
+															</figure>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+											<div class="layui-row">
+												<div class="layui-col-md1">
+													&nbsp;
+												</div>
+												<div class="layui-col-md11">
+													<div class="layui-collapse">
+														<div class="layui-colla-item">
+															<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;12&nbsp;&nbsp;</h2>
+															<div class="layui-colla-content">
+																<div class="layui-row">
+																	<font style="color:steelblue;">Black:</font>
+																	Awesome!
+																	<a style="color:lightseagreen;" href="javascript:void(0)" onclick="myJsFunc();"><i class="layui-icon layui-icon-delete"></i></a>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+											<!-- /一条消息 -->
+
+											<div class="layui-row">
+												<hr class="layui-bg-gray">
+											</div>
+
+										</div>
+									</div>
+									<!-- /main content -->
+          
+<script src="layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+	
+layui.use('util', function(){
+  var util = layui.util;
+  
+  //执行
+  util.fixbar({
+    bar1: true
+    ,click: function(type){
+      console.log(type);
+      if(type === 'bar1'){
+        alert('点击了bar1')
+      }
+    }
+  });
+});
+	
+	
+	
+	
+	
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+  
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+ 
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+  
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+  
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+ 
+  //表单初始赋值
+  form.val('example', {
+    "username": "贤心" // "name": "value"
+    ,"password": "123456"
+    ,"interest": 1
+    ,"like[write]": true //复选框选中状态
+    ,"close": true //开关状态
+    ,"sex": "女"
+    ,"desc": "我爱 layui"
+  })
+  
+  
+});
+</script>
+
+</body>
+</html>

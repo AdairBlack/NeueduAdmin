@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+	
+
+				<!-- 内容主体区域 -->
+				<div style="padding: 15px;">
+					<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a><a href="#">课程管理</a> <a href="lesson.html">课程信息</a><a><cite>课程详细信息</cite></a> </span> </div>
+					<div class="layui-row">
+						<hr class="layui-bg-gray">
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>课程编号</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id="lid"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>课程名称</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id="lname"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>课程图片</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id = "imgurl"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>课程价格</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id = "lprice"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>课程详情</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id = "ldesc"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+		</div>
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../js/urlParameter.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use('element', function() {
+				var element = layui.element;
+				var lid = $.getUrlParam("id");
+				$.ajax({
+					url: "/neueduAdministrator/lesson/LessonHandler_findLessonById",
+					type: "post",
+					data: {
+						lid: lid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						$("#lid").append(data.lid);
+						$("#lname").append(data.lname);
+						$("#imgurl").append('<img height="100" width="100" src="' + data.imgurl + '">')
+						$("#lprice").append(data.lprice);
+						$("#ldesc").append(data.ldesc);
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+			});
+		</script>
+	</body>
+
+</html>

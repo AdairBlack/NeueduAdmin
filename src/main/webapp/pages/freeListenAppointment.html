@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+
+				<!-- 内容主体区域 -->
+				<div style="padding: 15px;">
+					<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a><a>预约管理</a> <a><cite>处理预约信息</cite></a> </span> </div>
+					<div class="layui-row">
+						<hr class="layui-bg-gray">
+					</div>
+					<div class="layui-row">
+						<form class="layui-form">
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<div class="layui-form-label">课程名称:</div>
+									<div class="layui-input-inline">
+										<input name="keyword" id="keyword" type="text" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-inline">
+									<div class="layui-form-label">预约时间</div>
+									<div class="layui-input-inline">
+										<input name="fromDate" id="fromDate" type="date" class="layui-input">
+									</div>
+									<div class="layui-form-mid"> -</div>
+									<div class="layui-input-inline">
+										<input name="toDate" id="toDate" type="date" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-inline">
+									<label class="layui-form-label"> 用户昵称:</label>
+									<div class="layui-input-inline">
+										<input name="name" id="name" type="text" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-inline">
+									<label class="layui-form-label"> 预约状态:</label>
+									<div class="layui-input-inline">
+										<select name="status" id="stateSelector">
+											<option value="待处理'or freelistenbook.status='已处理">全部</option>
+											<option value="待处理">待处理</option>
+											<option value="已处理">已处理</option>
+										</select>
+									</div>
+								</div>
+								<div class="layui-inline">
+									<button type="button" class="layui-btn layui-btn-fluid" id="searchButton" onclick="searchButtonClick()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<table id="demo" lay-filter="test">
+					</table>
+				</div>
+			</div>
+
+		<!-- /body -->
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['element', 'table', 'form'], function() {
+				var table = layui.table,
+					element = layui.element,
+					form = layui.form;
+				var url = "/neueduAdministrator/freeListenBook/FreeListenBookHandler_findOrderByPage?qid=" + sessionStorage.getItem("qid");
+				renderTable(url, table);
+
+			})
+
+			function renderTable(urlParameter, table) {
+				console.log(urlParameter);
+				table.render({
+					elem: '#demo',
+					url: urlParameter,
+					page: true,
+					cols: [
+						[ //表头
+							{
+								field: 'id',
+								title: '预约课程编号',
+								width: 110,
+								sort: true,
+								fixed: 'left'
+							}, {
+								field: 'username',
+								title: '用户昵称',
+								width: 120
+							}, {
+								field: 'tel',
+								title: '用户电话',
+								width: 140
+							}, {
+								field: 'title',
+								title: '预约课程标题',
+								width: 180
+							}, {
+								field: 'booktime',
+								title: '预约时间',
+								width: 220,
+								sort: true
+							}, {
+								field: 'comment',
+								title: '留言',
+								width: 340
+							}, {
+								field: 'manipulate',
+								fixed: 'right',
+								title: '操作',
+								sort: true,
+								width: 80
+							}
+						]
+					]
+				});
+			}
+
+			function searchButtonClick() {
+				console.log("searchBtton");
+				var newUrl = "/neueduAdministrator/freeListenBook/FreeListenBookHandler_findSomeByPage?qid=" + sessionStorage.getItem("qid");
+				var fromDate = Date.parse($("#fromDate").val());
+				var toDate = Date.parse($("#toDate").val());
+				newUrl = newUrl + "&keyword=" + $("#keyword").val() + "&fromDate=" + fromDate + "&toDate=" + toDate + "&name=" + $("#name").val()+"&status="+$("#stateSelector").val();
+				renderTable(newUrl, layui.table);
+
+			};
+
+			function manipulateBook(bookId) {
+				$.ajax({
+					type: "get",
+					url: "/neueduAdministrator/freeListenBook/FreeListenBookHandler_manipulate?qid=" + sessionStorage.getItem("qid") + "&bookId=" + bookId,
+					success: function() {
+						searchButtonClick();
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

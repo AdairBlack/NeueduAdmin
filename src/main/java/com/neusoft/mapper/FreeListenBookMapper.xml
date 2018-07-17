@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.prg//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.mapper.FreeListenBookMapper">
+<resultMap type="com.neusoft.bean.FreeListenBook" id="FreeListenBook_FreeListen_map">
+<id property="id" column="id"/>
+<result property="fid" column="fid"/>
+<result property="username" column="username"/>
+<result property="tel" column="tel"/>
+<result property="booktime" column="booktime"/>
+<result property="status" column="status"/>
+<result property="comment" column="comment"/>
+<result property="openid" column="openid"/>
+<association property="freeListen" javaType="com.neusoft.bean.FreeListen">
+	<id property="id" column="id"/>
+	<result property="title" column="title"/>
+	<result property="lprice" column="lprice"/>
+	<result property="imgurl" column="imgurl"/>
+	<result property="qid" column="qid"/>
+</association>
+</resultMap>
+
+<sql id="querySome">
+    from freelistenbook
+    left join freelisten
+    on freelisten.id=freelistenbook.fid
+    where freelisten.qid=#{qid}
+    <if test="keyword !=null and keyword!=''">
+        and freelisten.title like '%${keyword}%'
+    </if>
+    <if test="fromDate!=null and fromDate!=''">
+        and freelistenbook.booktime > #{fromDate}
+    </if>
+    <if test="toDate!=null and toDate!=''">
+        and freelistenbook.booktime &lt; #{toDate}
+    </if>
+    <if test="username !=null and username!=''">
+        and freelistenbook.username like '%${username}%'
+    </if>
+    <if test="status !=null and status!=''">
+        and (freelistenbook.status='${status}')
+    </if>
+</sql>
+
+<select id="findAll" parameterType="int" resultMap="FreeListenBook_FreeListen_map">
+    select *from freelistenbook
+    left join freelisten
+    on freelisten.id=freelistenbook.fid
+    where freelisten.qid=#{qid}
+</select>
+
+<select id="findAllByPage" parameterType="Map" resultMap="FreeListenBook_FreeListen_map">
+    select *from freelistenbook
+    left join freelisten
+    on freelisten.id=freelistenbook.fid
+    where freelisten.qid=#{qid}
+    limit #{beginPage}, #{limit}
+</select>
+
+<select id="findById" parameterType="com.neusoft.vo.IdQidVO" resultMap="FreeListenBook_FreeListen_map">
+    select *from freelistenbook
+    left join freelisten
+    on freelisten.id=freelistenbook.fid
+    where freelisten.qid=#{qid} and freelistenbook.id=#{id}
+</select>
+
+<select id="findSome" parameterType="Map" resultMap="FreeListenBook_FreeListen_map">
+    select * 
+    <include refid="querySome"></include>
+</select>
+<select id="countFindSome" parameterType="Map" resultType="int">
+    select count(*) 
+    <include refid="querySome"></include>
+</select>
+
+<select id="findSomeByPage" parameterType="Map" resultMap="FreeListenBook_FreeListen_map">
+    select * 
+    <include refid="querySome"></include>
+    limit #{startPage}, #{limit}
+</select>
+
+<update id="manipulateBook" parameterType="int">
+    update freelistenbook set status= "已处理" where id=#{id}
+</update>
+
+</mapper>

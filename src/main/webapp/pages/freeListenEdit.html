@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;">
+			<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a> <a href="freeListen.html">预约管理</a> <a><cite>修改预约课程信息</cite></a> </span> </div>
+			<div class="layui-row">
+				<hr class="layui-bg-gray">
+			</div>
+			<form class="layui-form layui-form-pane" action="">
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>预约课程基本信息</legend>
+					</fieldset>
+				</div>
+
+				<div class="row">
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">课程名称</label>
+						<div class="layui-input-inline">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入课程名称" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">分部名字</label>
+						<div class="layui-input-inline">
+							<select name="centerSelector" lay-verify="required" id="centerSelector">
+								<option value="">请选择分部</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">课程状态</label>
+						<div class="layui-input-inline">
+							<select name="status" lay-verify="required">
+								<option value="">请选择课程状态</option>
+								<option value="未开始">未开始</option>
+								<option value="进行中">进行中</option>
+								<option value="已结束">已结束</option>
+							</select>
+						</div>
+					</div>
+
+				</div>
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>课程图片</legend>
+					</fieldset>
+				</div>
+				<div class="layui-row">
+					<div class="layui-upload">
+						<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;"> 预览图：
+							<div class="layui-upload-list" id="imagesPreview"></div>
+						</blockquote>
+						<button type="button" class="layui-btn" id="imagesChoose"><i class="fa fa-file-image-o"></i> 选择图片</button>
+						<button class="layui-btn layui-btn-primary" lay-submit lay-filter="imageReset"><i class="fa fa-recycle"></i> 重置图片</button>
+					</div>
+				</div>
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>课程详情</legend>
+					</fieldset>
+				</div>
+				<div class="layui-row">
+
+					<div class="layui-form-item layui-form-text">
+						<div class="layui-input-block">
+							<textarea name="content" id="editor" class="layui-textarea" rows="10" cols="20"></textarea>
+						</div>
+
+					</div>
+
+					<button class="layui-btn" lay-submit lay-filter="freeListenSubmit"><i class="fa fa-cloud-upload"></i> 提交信息</button>
+					<button class="layui-btn layui-btn-primary" lay-submit lay-filter="freeListenReset"><i class="fa fa-recycle"></i> 重置信息</button>
+
+				</div>
+			</form>
+		</div>
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../ckeditor/ckeditor.js"></script>
+		<script src="../js/urlParameter.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['element', 'form', 'upload'], function() {
+
+				var element = layui.element,
+					form = layui.form,
+					upload = layui.upload;
+				var imageFile;
+				var qid = sessionStorage.getItem("qid");
+				var imageFilename;
+				var id = $.getUrlParam("id");
+				var editor = CKEDITOR.replace('editor', {
+					language: 'zh-cn',
+					// Adding drag and drop image upload.
+					filebrowserUploadUrl: '/neueduAdministrator/enterprise/EnterpriseHandler_saveEditorImage',
+					removeDialogTabs: 'image:advanced;image:link'
+				});
+
+				var uploadImage = upload.render({
+					elem: '#imagesChoose', //绑定元素
+					url: '', //上传接口
+					accept: "images",
+					acceptMime: "image/*",
+					auto: false,
+					multiple: false,
+					size: 10240,
+					choose: function(obj) {
+						//若传多张图片则会多次调用这个函数
+						obj.preview(function(index, file, result) {
+							imageFile = file;
+							//固定图片长宽
+							$('#imagesPreview').append('<img height="65" width="65" src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+						});
+					},
+					done: function(res) {
+						//上传完毕回调
+					},
+					error: function() {
+						//请求异常回调
+						console.log('here');
+					}
+				});
+				$.ajax({
+					url: "/neueduAdministrator/enterprise/EnterpriseHandler_findAllBranch",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						for(i = 0; i < data.length; i++) {
+							$("#centerSelector").append('<option value="' + data[i].id + '">' + data[i].branch + '</option>');
+						}
+						form.render('select');
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				$.ajax({
+					url: "/neueduAdministrator/freeListen/FreeListenHandler_findFreeListenById",
+					type: "post",
+					data: {
+						id: id
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+						$('input[name=title]').val(data.title);
+						$('option[value=' + data.branchId + ']').attr("selected", "");
+						$('option[value=' + data.status + ']').attr("selected", "");
+						$('#imagesPreview').append('<img height="65" width="65" src="' + data.imgurl + '" alt="' + data.imgurl + '" class="layui-upload-img">');
+						CKEDITOR.instances.editor.setData(data.fdesc);
+						imageFilename = data.imgurl;
+						form.render('select');
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				form.on('submit(imageReset)', function(data) {
+					$("#imagesPreview").empty();
+					imageFile = null;
+					return false;
+				})
+
+				form.on('submit(freeListenReset)', function(data) {
+					CKEDITOR.instances.editor.setData("");
+					$("#imagesPreview").empty();
+					imageFile = null;
+					$('input[name=title]').val("");
+
+					return false;
+				})
+
+				form.on('submit(freeListenSubmit)', function(data) {
+					console.log(data);
+					var formData = new FormData();
+					if($.isEmptyObject(imageFile)) {
+						formData.append("imageChanged", false);
+						formData.append("imageFilename", imageFilename);
+					} else {
+						formData.append("imageChanged", true);
+						formData.append("imageFilename", imageFilename);
+					}
+
+					formData.append("id", id)
+					formData.append("title", data.field.title);
+					formData.append("branchId", data.field.centerSelector);
+					formData.append("status", data.field.status);
+					formData.append("fdesc", CKEDITOR.instances.editor.getData());
+					formData.append("image", imageFile);
+
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/freeListen/FreeListenHandler_updateFreeListen",
+						data: formData,
+						processData: false,
+						contentType: false,
+						dataType: "json",
+						success: function(data) {
+							alert(data.result);
+						}
+					});
+
+					return false;
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

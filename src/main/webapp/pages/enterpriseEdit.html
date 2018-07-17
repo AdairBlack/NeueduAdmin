@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;">
+			<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a> <a href="#">企业管理</a> <a><cite>编辑企业信息</cite></a> </span> </div>
+			<div class="layui-row">
+				<hr class="layui-bg-gray">
+			</div>
+			<form class="layui-form layui-form-pane">
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>企业基本信息</legend>
+					</fieldset>
+				</div>
+				<div class="layui-row">
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">企业名称</label>
+						<div class="layui-input-inline">
+							<input type="text" id="enterpriseName" name="enterpriseTitle" required lay-verify="required" placeholder="请输入企业名称" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">企业简介</label>
+						<div class="layui-input-block">
+							<textarea id="enterpriseIntroduction" name="enterpriseIntroduction" required placeholder="请输入企业简介" class="layui-textarea"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>企业图片</legend>
+					</fieldset>
+				</div>
+				<div class="layui-row">
+					<div class="layui-upload">
+						<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;"> 预览图：
+							<div class="layui-upload-list" id="enterpriseImagesPreview"></div>
+						</blockquote>
+						<button type="button" class="layui-btn" id="enterpriseImagesChoose"><i class="fa fa-file-image-o"></i> 选择图片</button>
+						<button class="layui-btn layui-btn-primary" lay-submit lay-filter="imageReset"><i class="fa fa-recycle"></i> 重置图片</button>
+					</div>
+				</div>
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>企业视频</legend>
+					</fieldset>
+				</div>
+				<div class="layui-row">
+					<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;"> 预览：
+						<div class="layui-upload-list" id="enterpriseVideoPreview"></div>
+					</blockquote>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn" id="enterpriseVideoChoose"><i class="fa fa-file-movie-o"></i> 选择视频</button>
+						<button class="layui-btn layui-btn-primary" lay-submit lay-filter="videoReset"><i class="fa fa-recycle"></i> 重置视频</button>
+					</div>
+				</div>
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>精彩展示</legend>
+					</fieldset>
+				</div>
+				<div class="layui-row">
+
+					<div class="layui-form-item layui-form-text">
+						<div class="layui-input-block">
+							<textarea name="content" id="enterpriseEditor" class="layui-textarea" rows="40" cols="20"></textarea>
+						</div>
+					</div>
+					<button class="layui-btn" lay-submit lay-filter="enterpriseSubmit"><i class="fa fa-cloud-upload"></i> 提交信息</button>
+					<button class="layui-btn layui-btn-primary" lay-submit lay-filter="enterpriseReset"><i class="fa fa-recycle"></i> 重置全部</button>
+
+				</div>
+			</form>
+		</div>
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../ckeditor/ckeditor.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['element', 'form', 'upload', 'layer'], function() {
+				var qid = sessionStorage.getItem("qid");
+
+				var element = layui.element,
+					form = layui.form,
+					upload = layui.upload,
+					layer = layui.layer;
+
+				var images = [];
+				var video;
+				var imageCount = 0;
+				var imageFilenames;
+				var videopath;
+
+				var editor = CKEDITOR.replace('enterpriseEditor', {
+					language: 'zh-cn',
+					// Adding drag and drop image upload.
+					filebrowserUploadUrl: '/neueduAdministrator/enterprise/EnterpriseHandler_saveEditorImage',
+					removeDialogTabs: 'image:advanced;image:link'
+				});
+
+				$.ajax({
+					url: "/neueduAdministrator/enterprise/EnterpriseHandler_findEnterpriseById",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					success: function(data) {
+						$("#enterpriseName").val(data.name);
+						$("#enterpriseIntroduction").val(data.introduction);
+						CKEDITOR.instances.enterpriseEditor.setData(data.jczs);
+						imageFilenames = data.imageFilenames;
+						videopath = data.videopath;
+						for(i = 0; i < data.imageFilenames.length; i++) {
+
+							imageCount = imageCount + 1;
+							$('#enterpriseImagesPreview').append('<img height="50" width="50" src="' + data.imageFilenames[i] + '" alt="' + data.imageFilenames[i] + '" class="layui-upload-img">')
+						}
+						$("#enterpriseVideoPreview").append("<video height='200' width='400' src = '" + data.videopath + "' controls='controls'>")
+
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				form.on('submit(enterpriseSubmit)', function(data) {
+					console.log(CKEDITOR.instances.enterpriseEditor.getData());
+					editor.updateElement()
+					var formData = new FormData();
+					//组装FormData
+					if($.isEmptyObject(images)) {
+						formData.append("imageChanged", false)
+						formData.append("imageFilenames", imageFilenames)
+					} else {
+						formData.append("imageChanged", true)
+					}
+					if($.isEmptyObject(video)) {
+						formData.append("videoChanged", false)
+						formData.append("videopath", videopath);
+					} else {
+						formData.append("videoChanged", true)
+					}
+					formData.append("qid", qid);
+					formData.append("name", $("#enterpriseName").val())
+					formData.append("introduction", $("#enterpriseIntroduction").val())
+					for(i = 0; i < images.length; i++) {
+						formData.append("images", images[i])
+					}
+					formData.append("video", video);
+					formData.append("jczs", CKEDITOR.instances.enterpriseEditor.getData());
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/enterprise/EnterpriseHandler_updateEnterprise",
+						data: formData,
+						processData: false,
+						contentType: false,
+						dataType: "json",
+						success: function(data) {
+							alert(data.result);
+						}
+					});
+
+					return false;
+				});
+				form.on('submit(enterpriseReset)', function(data) {
+					CKEDITOR.instances.enterpriseEditor.setData("");
+					$("#enterpriseImagesPreview").empty();
+					$("#enterpriseVideoPreview").empty();
+					images = [];
+					video = null;
+					imageCount = 0;
+					console.log(images);
+					console.log(video);
+					$("#enterpriseName").val("");
+					$("#enterpriseIntroduction").val("");
+
+					return false;
+				})
+				form.on('submit(imageReset)', function(data) {
+					$("#enterpriseImagesPreview").empty();
+					images = [];
+					imageCount = 0;
+					console.log(images);
+					return false;
+				})
+				form.on('submit(videoReset)', function(data) {
+					$("#enterpriseVideoPreview").empty();
+					video = null;
+					console.log(video);
+					return false;
+				})
+
+				var uploadEnterpriseImages = upload.render({
+					elem: '#enterpriseImagesChoose', //绑定元素
+					url: '', //上传接口
+					accept: "images",
+					acceptMime: "image/*",
+					auto: false,
+					multiple: true,
+					size: 10240,
+					number: 5,
+					choose: function(obj) {
+						//若传多张图片则会多次调用这个函数
+						obj.preview(function(index, file, result) {
+
+							var imageJudge = new Image();
+							imageJudge.src = result;
+							// 加载完成执行
+							imageJudge.onload = function() {
+								if(imageJudge.height > imageJudge.width) {
+									layer.confirm('请上传横版图片', {
+										offset: '100px',
+										btn: ['确认'] //可以无限个按钮
+									}, function(index, layero) {
+										console.log("1");
+										layer.closeAll();
+									});
+								} else {
+									//存放图片文件于images
+									images[imageCount] = file;
+									imageCount = imageCount + 1;
+									//固定图片长宽
+									$('#enterpriseImagesPreview').append('<img height="50" width="50" src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+								}
+							}
+						});
+					},
+					done: function(res) {
+						//上传完毕回调
+					},
+					error: function() {
+						//请求异常回调
+						console.log('here');
+					}
+				});
+
+				var uploadEnterpriseVideo = upload.render({
+					elem: "#enterpriseVideoChoose",
+					url: "",
+					accept: "video",
+					acceptMime: "video/*",
+					auto: false,
+					bindAction: "#enterpriseVideoUpload",
+					size: 102400,
+					choose: function(obj) {
+						obj.preview(function(index, file, result) {
+							video = file;
+							$("#enterpriseVideoPreview").append("<video height='200' width='400' src = '" + result + "' controls='controls'>")
+						});
+					},
+					done: function(res) {
+
+					},
+					error: function() {
+
+					}
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

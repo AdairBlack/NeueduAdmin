@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- body -->
+
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;">
+			<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a><a>预约管理</a> <a><cite>预约课程信息</cite></a> </span> </div>
+			<div class="layui-row">
+				<hr class="layui-bg-gray">
+			</div>
+			<div class="layui-row">
+				<div class="layui-col-md4">
+					<h1>预约课程信息表 </h1>
+				</div>
+				<div class="layui-col-md8">
+					<form class="layui-form" action="">
+						<div class="layui-form-item">
+							<div class="layui-input-inline">
+								<select name="center" id="centerSelector" lay-filter="centerSelector" style="width: 100px">
+									<option value="">请选择分部</option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+				<table class="layui-table" id="classTable">
+					<!-- 空表格，通过js填充-->
+					<thead>
+						<tr>
+							<th>课程标题</th>
+							<th>课程图片</th>
+							<th>课程状态</th>
+							<th>课程发布时间</th>
+							<th>详细信息</th>
+							<th>编辑信息</th>
+							<th>删除信息</th>
+						</tr>
+					</thead>
+					<tbody id="freeListenTable">
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['element', 'form'], function() {
+				var element = layui.element,
+					form = layui.form;
+
+				var qid = sessionStorage.getItem("qid");
+				var end = '<tr>' +
+					'<td colspan="8">' +
+					'<a width="100%" href="freeListenSave.html">' +
+					'<div><i class="fa fa-plus-circle fa-lg"></i>添加预约课程</div>' +
+					'</a>' +
+					'</td>' +
+					'</tr>';
+				var freeListens;
+
+				$.ajax({
+					url: "/neueduAdministrator/freeListen/FreeListenHandler_findAll",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						freeListens = data;
+						for(i = 0; i < data.length; i++) {
+							var item = '<tr id = "freeListen' + freeListens[i].id + '">' +
+								'<td>' + data[i].title + '</td>' +
+								'<td><img height="65" width = "65" src="' + data[i].imgurl + '" ></td>' +
+								'<td>' + data[i].status + '</td>' +
+								'<td>' + data[i].pubtime + '</td>' +
+								'<td>' +
+								'<a href="freeListenDescription.html?id=' + data[i].id + '"><i class="fa fa-eye fa-lg"></i></a>' +
+								'</td>' +
+								'<td>' +
+								'<a href="freeListenEdit.html?id=' + data[i].id + '"><i class="fa fa-pencil-square-o fa-lg"></i></a>' +
+								'</td>' +
+								'<td>' +
+								'<a href="javascript:deleteFreeListen(' + freeListens[i].id + ');"><i class="fa fa-trash fa-lg"></i></a>' +
+								'</td>' +
+								'</tr>';
+							$("#freeListenTable").append(item);
+						}
+						$("#freeListenTable").append(end);
+
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				$.ajax({
+					url: "/neueduAdministrator/enterprise/EnterpriseHandler_findAllBranch",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						for(i = 0; i < data.length; i++) {
+							$("#centerSelector").append('<option value="' + data[i].id + '">' + data[i].branch + '</option>');
+						}
+						form.render('select');
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				form.on('select(centerSelector)', function(data) {
+					$("#freeListenTable").empty();
+					console.log("......" + data.value + "......")
+					for(i = 0; i < freeListens.length; i++) {
+						if(freeListens[i].branchId == data.value) {
+							var item = '<tr id = "freeListen' + freeListens[i].id + '">' +
+								'<td>' + freeListens[i].title + '</td>' +
+								'<td><img height="65" width = "65" src="' + freeListens[i].imgurl + '" ></td>' +
+								'<td>' + freeListens[i].status + '</td>' +
+								'<td>' + new Date(freeListens[i].pubtime * 1000) + '</td>' +
+								'<td>' +
+								'<a href="freeListenDescription.html?id=' + freeListens[i].id + '"><i class="fa fa-eye fa-lg"></i></a>' +
+								'</td>' +
+								'<td>' +
+								'<a href="freeListenEdit.html?id=' + freeListens[i].id + '"><i class="fa fa-pencil-square-o fa-lg"></i></a>' +
+								'</td>' +
+								'<td>' +
+								'<a href="javascript:deleteFreeListen(' + freeListens[i].id + ');"><i class="fa fa-trash fa-lg"></i></a>' +
+								'</td>' +
+								'</tr>';
+							$("#freeListenTable").append(item);
+						}
+					}
+					$("#freeListenTable").append(end);
+				});
+
+			});
+
+			function deleteFreeListen(id) {
+				layer.confirm('确定删除吗？', {
+					offset: '100px',
+					btn: ['删除', '不删除'] //可以无限个按钮
+				}, function(index, layero) {
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/freeListen/FreeListenHandler_deleteFreeListen",
+						data: {
+							id: id
+						},
+						dataType: "json",
+						success: function(data) {
+							$("#freeListen" + id).remove()
+							layer.msg(data.result, {
+							  icon: 1,
+							  offset: '100px',
+							  time: 1000 
+							}); 
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+				}, function(index) {
+					//按钮【按钮二】的回调
+				});
+				}
+				
+				
+				
+				
+		</script>
+	</body>
+
+</html>

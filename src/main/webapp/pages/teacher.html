@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;">
+			<div class="layui-row"> <span class="layui-breadcrumb"> <a href="../index.html">首页</a> <a href="#">师资管理</a> <a><cite>师资力量</cite></a> </span> </div>
+			<div class="layui-row">
+				<hr class="layui-bg-gray">
+			</div>
+			<div class="layui-row">
+				<table class="layui-table">
+					<colgroup>
+						<col width="150">
+						<col width="200">
+						<col>
+					</colgroup>
+					<thead>
+						<tr>
+							<th>讲师姓名</th>
+							<th>讲师图片</th>
+							<th>讲师简介</th>
+							<th>编辑</th>
+							<th>删除</th>
+
+						</tr>
+					</thead>
+					<tbody id="teachers">
+
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script>
+			//JavaScript代码区域
+			var layer;
+			layui.use(['element','layer'], function() {
+				var element = layui.element;
+				layer = layui.layer;
+				var qid = sessionStorage.getItem("qid");
+
+				$.ajax({
+					url: "/neueduAdministrator/teacher/TeacherHandler_findAllTeacher",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						$("#teachers").empty();
+						var end = '<tr>' +
+							'<td colspan="5">' +
+							'<a width="100%" href="teacherSave.html">' +
+							'<div><i class="fa fa-plus-circle fa-lg"></i>添加讲师</div>' +
+							'</a>' +
+							'</td>' +
+							'</tr>';
+
+						for(i = 0; i < data.length; i++) {
+							var item = '<tr id="teacher' + data[i].tid + '">' +
+								'<td>' + data[i].tname + '</td>' +
+								'<td><img src="' + data[i].tphoto + '"></td>' +
+								'<td>' + data[i].introduction + '</td>' +
+								'<td>' +
+								'<a href="teacherEdit.html?id=' + data[i].tid + '"><i class="fa fa-edit fa-2x"></i></a>' +
+								'</td>' +
+								'<td>' +
+								'<a href="javascript:deleteTeacher(' + data[i].tid + ');"><i class="fa fa-trash fa-2x"></i></a>' +
+								'</td>' +
+								'</tr>';
+							$("#teachers").append(item);
+						}
+						$("#teachers").append(end);
+
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+			})
+
+			function deleteTeacher(tid) {
+				layer.confirm('确定删除吗？', {
+					offset: '100px',
+					btn: ['删除', '不删除'] //可以无限个按钮
+				}, function(index, layero) {
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/teacher/TeacherHandler_deleteTeacher",
+						data: {
+							tid: tid
+						},
+						dataType: "json",
+						success: function(data) {
+							$("#teacher" + tid).remove()
+							layer.msg(data.result, {
+							  icon: 1,
+							  offset: '100px',
+							  time: 1000 
+							}); 	
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+				}, function(index) {
+					//按钮【按钮二】的回调
+				});
+				
+			}
+		</script>
+	</body>
+
+</html>

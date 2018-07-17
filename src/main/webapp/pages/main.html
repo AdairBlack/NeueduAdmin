@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- 内容主体区域 -->
+				<div style="padding: 15px;">
+					<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a><a><cite>数据统计</cite></a> </span> </div>
+					<div class="layui-row">
+						<hr class="layui-bg-gray">
+					</div>
+
+					<!--
+					<div class="layui-row">
+						<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+							<legend>分部数据统计</legend>
+						</fieldset>
+					</div>
+
+					<div class="layui-row">
+						<div id="branchLessonSunburstChart" style="width: 600px;height:400px;"></div>
+					</div>
+
+					<div class="layui-row">
+
+						<div class="layui-col-md6">
+							<div id="branchOrderCountChart" style="width: 600px;height:400px;"></div>
+						</div>
+
+						<div class="layui-col-md6">
+							<div id="branchOrderTwiceChart"></div>
+						</div>
+
+					</div>
+
+					<div class="layui-row">
+						<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+							<legend>课程数据统计</legend>
+						</fieldset>
+					</div>
+
+					<div class="layui-row">
+
+					</div>
+					 -->
+					<!-- 
+					<div class="layui-row">
+						<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+							<legend>企业数据统计</legend>
+						</fieldset>
+					</div>
+					-->
+
+					<div class="layui-row">
+
+						<div id="myChart" style="width: 100%;height:500px;">
+						</div>
+
+					</div>
+
+				</div>
+
+		</div>
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../js/urlParameter.js"></script>
+		<script src="../js/echarts.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use('element', function() {
+				var element = layui.element;
+
+				var qid = $.getUrlParam("qid");
+				if(qid != null) {
+					sessionStorage.setItem("qid", qid);
+				}
+
+				qid = sessionStorage.getItem("qid");
+				console.log(sessionStorage.getItem("qid"));
+				var chartDataVo;
+
+				//动态js代码示例
+				//				var obj = {};
+				//				var key = "name";
+				//				var value = "张三丰"
+				//				eval("obj.p" + key + "='" + value + "'");
+				//				console.info(obj);
+
+				$.ajax({
+					url: "/neueduAdministrator/data/DataHandler_findChartDataVo",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					async: false,
+					dataType: "json",
+					success: function(data) {
+						console.log("......chartDataVo......");
+						console.log(data);
+						chartDataVo = data;
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				var yearCount = 0;
+				var chartData = [];
+				for(i = 0; i < chartDataVo.lessonCategoryVos.length; i++) {
+					chartData[i] = [];
+					yearCount = 0;
+					for(j = chartDataVo.startYear; j <= chartDataVo.endYear; j++) {
+						chartData[i][j] = [];
+						for(k = 0; k < chartDataVo.branchs.length; k++) {
+							chartData[i][j][k] = chartDataVo.lessonCategoryVos[i].yearDatas[yearCount].branchDatas[k];
+						}
+						yearCount++;
+					}
+				}
+				console.log("......chartData......");
+				console.log(chartData);
+
+				// 基于准备好的dom，初始化echarts实例
+				var myChart = echarts.init(document.getElementById('myChart'));
+
+				var dataMap = {};
+
+				function dataFormatter(obj) {
+					var pList = [];
+					for(i = 0; i < chartDataVo.branchs.length; i++) {
+						pList[i] = chartDataVo.branchs[i];
+					}
+					var temp;
+					for(var year = chartDataVo.startYear; year <= chartDataVo.endYear; year++) {
+						var max = 0;
+						var sum = 0;
+						temp = obj[year];
+						for(var i = 0, l = temp.length; i < l; i++) {
+							max = Math.max(max, temp[i]);
+							sum += temp[i];
+							obj[year][i] = {
+								name: pList[i],
+								value: temp[i]
+							}
+						}
+						obj[year + 'max'] = Math.floor(max / 100) * 100;
+						obj[year + 'sum'] = sum;
+					}
+					return obj;
+				}
+
+				for(i = 0; i < chartDataVo.lessonCategoryVos.length; i++) {
+					eval("dataMap.category" + i + "= dataFormatter(chartData[" + i + "]);");
+				}
+				console.log("......formatted Data......");
+				console.log(dataMap);
+
+				var yearData = [];
+				var yearCount = 0;
+				for(i = chartDataVo.startYear; i <= chartDataVo.endYear; i++) {
+					yearData[yearCount] = i;
+					yearCount++;
+				}
+				console.log("......Year Data......");
+				console.log(yearData);
+
+				var categoryData = [];
+				for(i = 0; i < chartDataVo.lessonCategoryVos.length; i++) {
+					categoryData[i] = chartDataVo.lessonCategoryVos[i].category;
+				}
+				console.log("......categoryData......");
+				console.log(categoryData);
+
+				var branchData = [];
+				for(i = 0; i < chartDataVo.branchs.length; i++) {
+					branchData[i] = chartDataVo.branchs[i];
+				}
+				console.log("......branchData......");
+				console.log(branchData);
+
+				var seriesData = [];
+				var seriesCount = 0;
+
+				function SeriesDataItem() {};
+				for(i = 0; i < categoryData.length; i++) {
+					var seriesDataItem = new SeriesDataItem();
+					seriesDataItem['name'] = categoryData[i];
+					seriesDataItem['type'] = 'bar';
+					seriesData[i] = seriesDataItem;
+				}
+				seriesCount = categoryData.length;
+				var seriesDataItem = new SeriesDataItem();
+				seriesDataItem['name'] = '销售额占比';
+				seriesDataItem['type'] = 'pie';
+				seriesDataItem['center'] = ['80%', '20%'];
+				seriesDataItem['radius'] = '15%';
+				seriesDataItem['z'] = 100;
+				seriesData[seriesCount] = seriesDataItem;
+				console.log("......seriesData......");
+				console.log(seriesData);
+				
+				var optionData = [];
+				for(i = 0; i <= (chartDataVo.endYear - chartDataVo.startYear); i++){
+					var yearNow =  chartDataVo.startYear + i;
+					var categoryCount = 0;
+					var obj = {title:{text:yearNow + "年企业分部课程营业额"}};
+					obj['series'] = [];
+					optionData[i] = obj;
+					for(j = 0; j < categoryData.length; j++){
+						eval("optionData[" + i + "].series[" + j + "] = {data : dataMap.category" + j + "[" + yearNow + "]};");
+					}
+					categoryCount = categoryData.length;
+					optionData[i].series[categoryCount] = {data:[]};
+					for(j = 0; j < categoryData.length; j++){
+						var str = "optionData[" + i + "].series[" + categoryCount + "].data[" + j + "] = {name: categoryData[" + j + "], value:dataMap.category" + j + "['" + yearNow + "sum']};"
+						eval("optionData[" + i + "].series[" + categoryCount + "].data[" + j + "] = {name: categoryData[" + j + "], value:dataMap.category" + j + "['" + yearNow + "sum']};");
+					}
+				}
+				console.log("......optionData......");
+				console.log(optionData);
+
+				option = {
+					baseOption: {
+						timeline: {
+							// y: 0,
+							axisType: 'category',
+							// realtime: false,
+							// loop: false,
+							autoPlay: false,
+							// currentIndex: 2,
+							playInterval: 1000,
+							// controlStyle: {
+							//     position: 'left'
+							// },
+							data: yearData,
+							label: {
+								formatter: function(s) {
+									return(new Date(s)).getFullYear();
+								}
+							}
+						},
+						title: {
+							subtext: '数据来自数据库'
+						},
+						tooltip: {},
+						legend: {
+							x: 'right',
+							data: categoryData,
+						},
+						calculable: true,
+						grid: {
+							top: 80,
+							bottom: 100,
+							tooltip: {
+								trigger: 'axis',
+								axisPointer: {
+									type: 'shadow',
+									label: {
+										show: true,
+										formatter: function(params) {
+											return params.value.replace('\n', '');
+										}
+									}
+								}
+							}
+						},
+						xAxis: [{
+							'type': 'category',
+							'axisLabel': {
+								'interval': 0
+							},
+							'data': branchData,
+							splitLine: {
+								show: false
+							}
+						}],
+						yAxis: [{
+							type: 'value',
+							name: '销售额（元）'
+						}],
+						series: seriesData
+					},
+					options: optionData
+				};
+
+				myChart.setOption(option);
+
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;">
+			<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a><a href="#">课程管理</a> <a><cite>课程信息</cite></a> </span> </div>
+			<div class="layui-row">
+				<hr class="layui-bg-gray">
+			</div>
+			<div class="layui-row">
+				<div class="layui-col-md4">
+					<h1>课程信息表 </h1>
+				</div>
+				<div class="layui-col-md8">
+					<form class="layui-form" action="">
+						<div class="layui-form-item">
+							<div class="layui-input-inline">
+								<select name="center" id="centerSelector" lay-filter="centerSelector" style="width: 100px">
+									<option value="">请选择分部</option>
+
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+				<table class="layui-table" id="classTable">
+					<!-- 空表格，通过js填充-->
+					<thead>
+						<tr>
+							<th>课程编号</th>
+							<th>课程名称</th>
+							<th>课程图片</th>
+							<th>课程价钱</th>
+							<th>课程类别</th>
+							<th>详细信息</th>
+							<th>编辑信息</th>
+							<th>删除信息</th>
+						</tr>
+					</thead>
+					<tbody id="lessonTable">
+					</tbody>
+				</table>
+			</div>
+			<div class = "layui-row">
+				<div id = "page" class="layui-col-md4 layui-col-md-offset4">
+					
+				</div>
+				
+			</div>
+		</div>
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script>
+			//JavaScript代码区域
+			
+			layui.use(['element', 'form', 'laypage'], function() {
+				var element = layui.element,
+					form = layui.form,
+					laypage = layui.laypage;
+				var qid = sessionStorage.getItem("qid");
+				
+				laypage.render({
+					elem: 'page',
+					count: 50
+				});
+				
+				var end = '<tr>' +
+					'<td colspan="8">' +
+					'<a width="100%" href="lessonSave.html">' +
+					'<div><i class="fa fa-plus-circle fa-lg"></i>添加课程</div>' +
+					'</a>' +
+					'</td>' +
+					'</tr>';
+				var lessons;
+				var lessonBranches;
+
+				$.ajax({
+					url: "/neueduAdministrator/lesson/LessonHandler_findAll",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						lessons = data;
+
+						for(i = 0; i < data.length; i++) {
+							var item = '<tr id = "lesson' + data[i].lid + '">' +
+								'<td>' + data[i].lid + '</td>' +
+								'<td>' + data[i].lname + '</td>' +
+								'<td><img height="65" width = "65" src="' + data[i].imgurl + '" ></td>' +
+								'<td>' + data[i].lprice + '</td>' +
+								'<td>' + data[i].category + '</td>' +
+								'<td>' +
+								'<a href="lessonDescription.html?id=' + data[i].lid + '"><i class="fa fa-eye fa-lg"></i></a>' +
+								'</td>' +
+								'<td>' +
+								'<a href="lessonEdit.html?id=' + data[i].lid + '"><i class="fa fa-pencil-square-o fa-lg"></i></a>' +
+								'</td>' +
+								'<td>' +
+								'<a href="javascript:deleteLesson(' + data[i].lid + ');"><i class="fa fa-trash fa-lg"></i></a>' +
+								'</td>' +
+								'</tr>';
+							$("#lessonTable").append(item);
+						}
+						$("#lessonTable").append(end);
+
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				$.ajax({
+					url: "/neueduAdministrator/enterprise/EnterpriseHandler_findAllBranch",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						for(i = 0; i < data.length; i++) {
+							$("#centerSelector").append('<option value="' + data[i].id + '">' + data[i].branch + '</option>');
+						}
+						form.render('select');
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				$.ajax({
+					url: "/neueduAdministrator/lesson/LessonHandler_findAllLessonBranch",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+						lessonBranches = data;
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				form.on('select(centerSelector)', function(data) {
+					$("#lessonTable").empty();
+					console.log("......" + data.value + "......")
+					for(i = 0; i < lessonBranches.length; i++) {
+						if(data.value == lessonBranches[i].branchId) {
+							console.log("......find1......")
+							for(j = 0; j < lessons.length; j++) {
+								if(lessons[j].lid == lessonBranches[i].lid) {
+									console.log("......find2......")
+									var item = '<tr id = "lesson' + lessons[j].lid + '">' +
+										'<td>' + lessons[j].lid + '</td>' +
+										'<td>' + lessons[j].lname + '</td>' +
+										'<td><img height="65" width = "65" src="' + lessons[j].imgurl + '" ></td>' +
+										'<td>' + lessons[j].lprice + '</td>' +
+										'<td>' + lessons[j].category + '</td>' +
+										'<td>' +
+										'<a href="lessonDescription.html?id=' + lessons[j].lid + '"><i class="fa fa-eye fa-lg"></i></a>' +
+										'</td>' +
+										'<td>' +
+										'<a href="lessonEdit.html?id=' + lessons[j].lid + '"><i class="fa fa-pencil-square-o fa-lg"></i></a>' +
+										'</td>' +
+										'<td>' +
+										'<a href="javascript:deleteLesson(' + lessons[j].lid + ');"><i class="fa fa-trash fa-lg"></i></a>' +
+										'</td>' +
+										'</tr>';
+									$("#lessonTable").append(item);
+								}
+							}
+						}
+					}
+					$("#lessonTable").append(end);
+				});
+
+			});
+
+			function deleteLesson(lid) {
+				layer.confirm('确定删除吗？', {
+					offset: '100px',
+					btn: ['删除', '不删除'] //可以无限个按钮
+				}, function(index, layero) {
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/lesson/LessonHandler_deleteLesson",
+						data: {
+							lid: lid
+						},
+						dataType: "json",
+						success: function(data) {
+							$("#lesson" + lid).remove()
+							layer.msg(data.result, {
+							  icon: 1,
+							  offset: '100px',
+							  time: 1000 
+							}); 	
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+				}, function(index) {
+					//按钮【按钮二】的回调
+				});
+				
+			}
+		</script>
+	</body>
+
+</html>

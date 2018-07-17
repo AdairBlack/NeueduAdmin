@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../css/moment.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;" id="messageList">
+			<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a> <a href="#">朋友圈管理</a> <a><cite>朋友圈评论管理</cite></a> </span> </div>
+			<div class="layui-row">
+				<hr class="layui-bg-gray">
+			</div>
+
+		</div>
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use('element', function() {
+				var element = layui.element;
+				var messages;
+				var qid = sessionStorage.getItem("qid");
+				var enterprise;
+
+				$.ajax({
+					url: "/neueduAdministrator/message/MessageHandler_findAllMessage",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					async: false,
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+						messages = data;
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				$.ajax({
+					url: "/neueduAdministrator/enterprise/EnterpriseHandler_findEnterpriseById",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					async: false,
+					success: function(data) {
+						console.log(data);
+						enterprise = data;
+						for(i = 0; i < messages.length; i++) {
+							var item = '<!-- 一条消息 -->' +
+								'<div class="layui-row" id = "message' + messages[i].mid + '">' +
+								'<div class="layui-row">' +
+								'<div class="layui-col-md1">' +
+								'<img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" width="50" height="50">' +
+								'</div>' +
+								'<div class="layui-col-md10">' +
+								'<strong>' + enterprise.name + '</strong>' +
+								'</div>' +
+								'<div class="layui-col-md1">' +
+								'<a style="color:lightseagreen;" href="momentEdit.html?id=' + messages[i].mid + '"><i class="layui-icon layui-icon-edit fa-lg"></i></a>' +
+								'<a style="color:lightseagreen;" href="javascript:deleteMessage(' + messages[i].mid + ')" color="black"><i class="layui-icon layui-icon-delete fa-lg"></i></a>' +
+								'</div>' +
+								'</div>' +
+								'<div class="layui-row">' +
+								'<div class="layui-col-md1">' +
+								'&nbsp;' +
+								'</div>' +
+								'<div class="layui-col-md8">' +
+								'<div class="layui-row">' +
+								messages[i].mtitle +
+								'</div>' +
+								'<div class="layui-row">' +
+								'&nbsp;' +
+								'</div>' +
+								'<div class="layui-row">' +
+								'<ul class="figure-list">';
+
+							for(j = 0; j < messages[i].messageImgs.length; j++) {
+								var itemInner = '<li>' +
+									'<figure style="background-image:url(' + messages[i].messageImgs[j].imgurl + ')">' +
+									'<a href="#"></a>' +
+									'</figure>' +
+									'</li>';
+								item = item + itemInner;
+							}
+
+							item = item +
+
+								'</ul>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+
+								'<!-- 评论区 -->' +
+								'<div class="layui-row" id = "commentArea' + messages[i].mid + '">' +
+								'<div class="layui-col-md1">' +
+								'&nbsp;' +
+								'</div>' +
+								'<div class="layui-col-md11">' +
+								'<div class="layui-collapse">' +
+								'<div class="layui-colla-item">' +
+								'<h2 class="layui-colla-title"><i class="fa fa-heart-o"></i>&nbsp;' + messages[i].messageLikes.length +
+								'&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;' +
+								'<font id = "commentCount' + messages[i].mid + '">' + messages[i].messageReplies.length + '</font>' +
+								'&nbsp;&nbsp;</h2>' +
+								'<div class="layui-colla-content">';
+
+							for(j = 0; j < messages[i].messageReplies.length; j++) {
+								var itemInner = '<!-- 一条评论 -->' +
+									'<div class="layui-row" id = "comment' + messages[i].messageReplies[j].id + '">' +
+									'<font style="color:steelblue;">' + messages[i].messageReplies[j].nickname + ':</font>' +
+									messages[i].messageReplies[j].content +
+									'<a style="color:lightseagreen;" href="javascript:deleteComment(' + messages[i].messageReplies[j].id + ',' + messages[i].mid + ');"><i class="layui-icon layui-icon-delete"></i></a>' +
+									'</div>' +
+									'<!-- /一条评论 -->';
+								item = item + itemInner;
+							}
+
+							item = item +
+
+								'</div>' +
+								'</div>' +
+								'</div>' +
+
+								'</div>' +
+								'</div>' +
+								'<!-- /评论区 -->' +
+								'</div>' +
+
+								'<!-- 分隔线 -->' +
+								'<div class="layui-row" id = "line' + messages[i].mid + '">' +
+								'<hr class="layui-bg-gray">' +
+								'</div>' +
+								'<!-- /一条消息 -->';
+
+							$("#messageList").append(item);
+							element.render('collapse');
+						}
+
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+			});
+
+			function deleteMessage(mid) {
+				var msg = "确定要删除吗？";
+				if(confirm(msg) == true) {
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/message/MessageHandler_deleteMessage",
+						data: {
+							mid: mid
+						},
+						dataType: "json",
+						success: function(data) {
+							$("#message" + mid).remove()
+							$("#line" + mid).remove()
+							$("#commentArea" + mid).remove()
+							alert(data.result)
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			function deleteComment(id, mid) {
+				var msg = "确定要删除吗？";
+				if(confirm(msg) == true) {
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/message/MessageHandler_deleteComment",
+						data: {
+							id: id
+						},
+						dataType: "json",
+						success: function(data) {
+							console.log($("#commentCount" + mid).text());
+							$("#comment" + id).remove();
+							alert(data.result);
+							$("#commentCount" + mid).text($("#commentCount" + mid).text() - 1);
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+					return true;
+				} else {
+					return false;
+				}
+			}
+		</script>
+	</body>
+
+</html>

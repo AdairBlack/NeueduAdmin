@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- body -->
+		<div class="layui-layout layui-layout-admin">
+
+			<!-- header -->
+			<div class="layui-header">
+				<div class="layui-logo">Terminator</div>
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<a href="javascript:;"> <img src="../resource/image/1b6ad0b44aed2e737d1251a38501a18b86d6fa53.jpg" class="layui-nav-img"> Adair </a>
+					</li>
+				</ul>
+			</div>
+			<!-- /header -->
+
+			<!-- sidebar -->
+			<div class="layui-side layui-bg-black">
+				<div class="layui-side-scroll">
+					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+					<ul class="layui-nav layui-nav-tree" lay-filter="test">
+						<li class="layui-nav-item">
+							<a href="super.html"><i class="fa fa-user-o"></i> 用户管理</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="userSave.html"><i class="fa fa-plus-circle"></i> 添加用户</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- /sidebar -->
+
+			<!-- main content -->
+			<div class="layui-body">
+
+				<!-- 内容主体区域 -->
+				<div style="padding: 15px;">
+					<div class="layui-row"> <span class="layui-breadcrumb"> <a href="../index.html">首页</a><a><cite>用户管理</cite></a> </span> </div>
+					<div class="layui-row">
+						<hr class="layui-bg-gray">
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col width="200">
+								<col width="150">
+								<col width="200">
+								<col width="200">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>用户ID</th>
+									<th>名称</th>
+									<th>密码</th>
+									<th>企业ID</th>
+									<th>企业名称</th>
+									<th>删除</th>
+								</tr>
+							</thead>
+							<tbody id="table">
+
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+			<!-- /main content -->
+
+			<!-- footer -->
+			<div class="layui-footer">
+				<!-- 底部固定区域 -->
+				© layui.com - 底部固定区域 </div>
+			<!-- /footer -->
+
+		</div>
+		<!-- /body -->
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use('element', function() {
+				var element = layui.element;
+				//dataType:把返回的json字符串转成对象
+				$.ajax({
+					url: "/neueduAdministrator/user/UserHandler_findAllAdmin",
+					type: "post",
+					dataType: "json",
+					success: function(data) {
+						console.log("......displayUsername......")
+						console.log(data);
+						$("#table").empty();
+						var addEnd = '<tr>' +
+							'<td colspan="8">' +
+							'<a width="100%" href="userSave.html">' +
+							'<div><i class="fa fa-plus-circle fa-lg"></i>添加用户</div>' +
+							'</a>' +
+							'</td>' +
+							'</tr>';
+						for(i = 0; i < data.length; i++) {
+							var item = '<tr id = "user' + data[i].id + '">' +
+								'<td>' + data[i].id + '</td>' +
+								'<td>' + data[i].username + '</td>' +
+								'<td>' + data[i].userpassword + '</td>' +
+								'<td>' + data[i].qid + '</td>' +
+								'<td>' + data[i].qname + '</td>' +
+								'<td>' +
+								'<a href="javascript:deleteAdmin(' + data[i].id + ');"><i class="fa fa-trash-o fa-2x"></i></a>' +
+								'</td>' +
+								'</tr>';
+							$("#table").append(item);
+						}
+						$("#table").append(addEnd);
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+			});
+
+			function deleteAdmin(id) {
+				var msg = "确定要删除吗？";
+				if(confirm(msg) == true) {
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/user/UserHandler_deleteAdmin",
+						data: {
+							id: id
+						},
+						dataType: "json",
+						success: function(data) {
+							$("#user" + id).remove()
+							alert(data.result)
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+					return true;
+				} else {
+					return false;
+				}
+			}
+		</script>
+	</body>
+
+</html>

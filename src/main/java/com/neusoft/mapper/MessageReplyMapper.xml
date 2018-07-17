@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.mapper.MessageReplyMapper">
+
+	<select id = "findMessageReplyById" parameterType = "int" resultType = "com.neusoft.bean.MessageReply">
+		select * 
+		from messagereply
+		where mid = #{mid}
+	</select>
+	
+	<delete id = "deleteComment" parameterType = "int">
+		DELETE FROM messagereply WHERE id = #{id};
+	</delete>
+
+</mapper>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;">
+			<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a> <a href="#">订单管理</a> <a><cite>订单退款</cite></a> </span> </div>
+			<div class="layui-row">
+				<hr class="layui-bg-gray">
+			</div>
+			<div class="layui-row">
+				<form class="layui-form">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<div class="layui-form-label">订单编号:</div>
+							<div class="layui-input-inline">
+								<input name="keyword" type="text" class="layui-input" id="keyword">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-label">下单时间</div>
+							<div class="layui-input-inline">
+								<input name="keyword" type="date" class="layui-input" id="fromDate">
+							</div>
+							<div class="layui-form-mid"> -</div>
+							<div class="layui-input-inline">
+								<input name="keyword" type="date" class="layui-input" id="toDate">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<label class="layui-form-label"> 用户昵称:</label>
+							<div class="layui-input-inline">
+								<input name="name" type="text" class="layui-input" id="name">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<label class="layui-form-label"> 订单状态:</label>
+							<div class="layui-input-inline">
+								<select name="" id="stateSelector">
+									<option value="已处理'or refund.status='待处理">全部</option>
+									<option value="待处理">待处理</option>
+									<option value="已处理">已处理</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-inline">
+							<button type="button" onclick="searchButtonClick()" class="layui-btn layui-btn-fluid" id="searchButton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<table id="demo" lay-filter="test">
+			</table>
+		</div>
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['element', 'table', 'form'], function() {
+				var table = layui.table,
+					element = layui.element,
+					form = layui.form;
+				var url = "/neueduAdministrator/refund/RefundHandler_findSomeByPage?qid=" + sessionStorage.getItem("qid");
+
+				renderTable(url, table);
+
+			})
+
+			function renderTable(newUrl, table) {
+				table.render({
+					elem: '#demo',
+					url: newUrl,
+					page: true,
+					cols: [
+						[ //表头
+							{
+								field: 'oid',
+								title: '订单编号',
+								width: 150,
+								fixed: 'left'
+							}, {
+								field: 'refundReason',
+								title: '退款原因',
+								width: 550
+							}, {
+								field: 'status',
+								title: '退款状态',
+								width: 150
+							}, {
+								field: 'refundTimeString',
+								title: '退款时间',
+								width: 250
+							}, {
+								field: 'manipulate',
+								title: '操作',
+								width: 150,
+								fixed: 'right'
+							}
+						]
+					]
+				});
+			}
+
+			function searchButtonClick() {
+				var newUrl = "/neueduAdministrator/refund/RefundHandler_findSomeByPage?qid=" + sessionStorage.getItem("qid");
+				var fromDate = Date.parse($("#fromDate").val());
+				var toDate = Date.parse($("#toDate").val());
+				newUrl = newUrl + "&oid=" + $("#keyword").val() + "&fromDate=" + fromDate + "&toDate=" + toDate + "&status=" + $("#stateSelector").val();
+				renderTable(newUrl, layui.table);
+
+			};
+
+			function manipulateBook(oid) {
+				$.ajax({
+					type: "get",
+					url: "/neueduAdministrator/refund/RefundHandler_manipulate?qid=" + sessionStorage.getItem("qid") + "&oid=" + oid,
+					done: function() {
+						searchButtonClick();
+					},
+					error: function() {
+						searchButtonClick();
+					},
+					success: function() {
+						searchButtonClick();
+					},
+				});
+			}
+		</script>
+
+	</body>
+
+</html>

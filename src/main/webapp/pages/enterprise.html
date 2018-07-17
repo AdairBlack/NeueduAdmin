@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<title>Terminator</title>
+<link rel="stylesheet" href="../layui/css/layui.css"/>
+<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css"/>
+</head>
+
+<body class="layui-layout-body">
+
+<!-- body -->
+  
+  
+  <!-- main content -->
+    
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+      <div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a> <a href="#">企业管理</a> <a><cite>企业基本信息</cite></a> </span> </div>
+      <div class="layui-row">
+        <hr class="layui-bg-gray">
+      </div>
+      <div class="layui-row">
+        <table class="layui-table">
+          <colgroup>
+          <col width="150">
+          <col width="200">
+          <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th>企业名称</th>
+            </tr>
+          </thead>
+          <tbody id = "enterpriseName">
+          </tbody>
+        </table>
+      </div>
+      <div class="layui-row">
+        <table class="layui-table">
+          <colgroup>
+          <col width="150">
+          <col width="200">
+          <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th>企业图片</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            	<td id = "enterpriseImage">
+            	</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="layui-row">
+        <table class="layui-table">
+          <colgroup>
+          <col width="150">
+          <col width="200">
+          <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th>企业简介</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="enterpriseIntroduction"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="layui-row">
+        <table class="layui-table">
+          <colgroup>
+          <col width="150">
+          <col width="200">
+          <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th>企业视频</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><video id = "enterpriseVideo" height="200" width="400" controls="controls"></video></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="layui-row">
+        <table class="layui-table">
+          <colgroup>
+          <col width="150">
+          <col width="200">
+          <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th>精彩展示</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="enterpriseJczs"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<!-- /body --> 
+
+<script src="../js/jquery-3.3.1.min.js"></script> 
+<script src="../layui/layui.js"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  var qid = sessionStorage.getItem("qid");
+  //dataType:把返回的json字符串转成对象
+$.ajax({
+	  url:"/neueduAdministrator/enterprise/EnterpriseHandler_findEnterpriseById",
+	  type:"post",
+	  data:{qid:qid},
+	  dataType:"json",
+	  success:function(data){
+	  	console.log(data)
+		  var enterpriseName = "<tr><td>" + data.name + "</td></tr>";
+		  $("#enterpriseName").append(enterpriseName);
+		  $("#enterpriseVideo").attr("src",data.videopath);
+		  $("#enterpriseIntroduction").append(data.introduction);
+		  $("#enterpriseJczs").append(data.jczs);
+		  for(i = 0; i < data.imageFilenames.length; i++){
+		  	$("#enterpriseImage").append('<img height="100" width="100" src="' + data.imageFilenames[i] + '">')
+		  }
+	  },
+	  error:function(err){
+		  console.log(err);
+	  }
+})
+});
+</script>
+</body>
+</html>

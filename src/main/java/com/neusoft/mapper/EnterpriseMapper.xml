@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.mapper.EnterpriseMapper">
+	
+	<select id = "findEnterpriseById" parameterType = "Integer" resultType = "com.neusoft.bean.Enterprise">
+		select * 
+		from enterprise
+		where qid = #{qid}
+	</select>
+	
+	<select id="findAllBranch" parameterType = "int" resultType="com.neusoft.bean.EnterpriseBranch">
+		select * from address
+		where qid = #{qid}  and `show` = 1
+	</select>
+	
+	<select id="findAllBranchName" parameterType = "int" resultType="String">
+		select distinct branch
+		from address
+		where qid = #{qid}  and `show` = 1
+	</select>
+	
+	<select id = "findAllBranchId" parameterType = "int" resultType = "int">
+		select id
+		from address
+		where qid = #{qid} and `show` = 1
+	</select>
+	
+	<update id="updateEnterprise" parameterType = "com.neusoft.bean.Enterprise">
+		update enterprise 
+		set name = #{name}, introduction = #{introduction}, jczs = #{jczs}, videopath = #{videopath}
+		where qid = #{qid}
+	</update>
+	
+	<update id="deleteBranch" parameterType = "int">
+		update address
+		set `show` = 0
+		where id = #{id}
+	</update>
+	
+	<select id = "findBranchById" parameterType = "int" resultType = "com.neusoft.bean.EnterpriseBranch">
+		select * from address
+		where id = #{id}
+	</select>
+	
+	<update id="updateBranch" parameterType = "com.neusoft.bean.EnterpriseBranch">
+		update address
+		set branch = #{branch}, address = #{address}, tel = #{tel}, longitude = #{longitude}, latitude = #{latitude}
+		where id = #{id}
+	</update>
+	
+	<insert id = "saveBranch" parameterType = "com.neusoft.bean.EnterpriseBranch">
+		insert into address 
+		(qid, branch, address, tel, longitude, latitude, `show`) 
+		values (#{qid}, #{branch}, #{address}, #{tel}, #{longitude}, #{latitude}, 1)
+	</insert>
+	
+</mapper>

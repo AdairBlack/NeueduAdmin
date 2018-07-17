@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.mapper.MessageImgMapper">
+
+	<select id = "findMessageImgById" parameterType = "int" resultType = "com.neusoft.bean.MessageImg">
+		select * 
+		from messageimg
+		where mid = #{mid}
+	</select>
+	
+	<insert id="saveMessageImg" parameterType="com.neusoft.bean.MessageImg">
+        insert into messageimg (mid,imgurl)
+        values(#{mid}, #{imgurl})
+    </insert>
+    
+    <delete id="deleteMessageImgByMessageId" parameterType = "int">
+		DELETE FROM messageimg WHERE mid = #{mid};
+	</delete>
+
+</mapper>

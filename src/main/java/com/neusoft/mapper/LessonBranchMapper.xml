@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.mapper.LessonBranchMapper">
+    
+    
+    
+    <insert id="saveLessonBranch" parameterType="com.neusoft.bean.LessonBranch">
+        insert into lessonbranch(lid,branchid) values(#{lid},#{branchId})
+    </insert>
+    
+    <delete id="deleteLessonBranchByLessonId" parameterType="Integer">
+        delete from lessonbranch where lid=#{lid}
+    </delete>
+    
+    <select id="findLessonBranchByBranchId" parameterType="int" resultType="com.neusoft.bean.LessonBranch">
+        select * from lessonbranch where branchid=#{id}
+    </select>
+    
+    <select id="findLessonBranchByLessonId" parameterType="int" resultType="com.neusoft.bean.LessonBranch">
+        select * from lessonbranch where lid=#{id}
+    </select>
+    
+    <select id="findAll" parameterType="int" resultType="com.neusoft.bean.LessonBranch">
+        select lessonbranch.id id, lessonbranch.lid lid, lessonbranch.branchid branchid
+        from lessonbranch join address
+        	 on lessonbranch.branchid = address.id
+        where address.qid = #{qid}
+    </select>
+</mapper>

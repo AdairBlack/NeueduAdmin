@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.mapper.UserMapper">
+	
+	<select id = "findUserByUsernameAndUserpassword" parameterType = "com.neusoft.bean.User" resultType = "com.neusoft.bean.User">
+		select * 
+		from user
+		where username = #{username} and userpassword = #{userpassword}
+	</select>
+	
+	<update id = "updateUserPassword" parameterType = "com.neusoft.bean.User">
+        update user 
+        set user.userpassword=#{userpassword}, user.username=#{username}
+        where user.id=#{id}
+    </update>
+    
+    <select id="findAllAdmin" resultType = "com.neusoft.bean.User">
+    	select  user.id id, user.username username, user.userpassword userpassword, user.qid qid, enterprise.name qname
+		from neuedu.user left join neuedu.enterprise
+		 						 on user.qid = enterprise.qid
+		where jurisdiction = '管理员' and `show` = 1
+    </select>
+    
+    <insert id="saveEmptyEnterprise" parameterType="com.neusoft.bean.User">
+        insert into enterprise
+        values()
+        <selectKey keyProperty="qid" order="AFTER" resultType="int">
+            select LAST_INSERT_ID()
+     	</selectKey>
+    </insert>
+    
+    <insert id="saveAdmin" parameterType="com.neusoft.bean.User">
+        insert into user (username,userpassword, qid, jurisdiction, `show`)
+        values(#{username}, #{userpassword},#{qid}, '管理员', 1)
+    </insert>
+    
+    <update id = "deleteAdmin" parameterType = "int">
+    	update user
+    	set `show` = 0
+		where id = #{id}
+    </update>
+	
+</mapper>

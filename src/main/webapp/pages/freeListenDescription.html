@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+				<!-- 内容主体区域 -->
+				<div style="padding: 15px;">
+					<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a><a>预约管理</a> <a href="freeListen.html">预约课程信息</a><a><cite>预约课程详细信息</cite></a> </span> </div>
+					<div class="layui-row">
+						<hr class="layui-bg-gray">
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>预约课程标题</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id = "title"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>预约课程图片</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id = "imgurl"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>预约课程状态</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id = "status"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>分部名字</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id = "branch"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="layui-row">
+						<table class="layui-table">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>预约课程详情</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id = "fdesc"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../js/urlParameter.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use('element', function() {
+				var element = layui.element;
+				var id = $.getUrlParam("id");
+				var branchid;
+				$.ajax({
+					url: "/neueduAdministrator/freeListen/FreeListenHandler_findFreeListenById",
+					type: "post",
+					data: {
+						id: id
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						$("#title").append(data.title);
+						$("#imgurl").append('<img height="100" width="100" src="' + data.imgurl + '">');
+						$("#fdesc").append(data.fdesc);
+						$("#status").append(data.status);
+						branchid = data.branchId;
+						findBranch(branchid);
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+				
+				
+				
+			});
+			
+			function findBranch(branchid){
+				$.ajax({
+					url: "/neueduAdministrator/enterprise/EnterpriseHandler_findBranchById",
+					type: "post",
+					data: {
+						id: branchid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+						$("#branch").append(data.branch);
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+			}
+		</script>
+	</body>
+
+</html>

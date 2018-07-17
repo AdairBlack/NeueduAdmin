@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- body -->
+		<div class="layui-layout layui-layout-admin">
+
+			<!-- header -->
+			<div class="layui-header">
+				<div class="layui-logo">Terminator</div>
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<a href="javascript:;" id="displayUsername"> </a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="javascript:window.setBodySrc('user.html');">基本资料</a>
+							</dd>
+							<dd>
+								<a href="/neueduAdministrator/login/LoginHandler_logout">退出账户</a>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			<!-- /header -->
+
+			<!-- sidebar -->
+			<div class="layui-side layui-bg-black">
+
+				<div class="layui-side-scroll">
+					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+					<ul class="layui-nav layui-nav-tree" lay-filter="test">
+						<li class="layui-nav-item layui-nav-itemed">
+							<a href="javascript:window.setBodySrc('main.html');"><i class="fa fa-bar-chart"></i> 数据统计</a>
+						</li>
+						<li id="enterpriseLi" class="layui-nav-item">
+							<a href="javascript:;"><i class="fa fa-home"></i> 企业管理</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:window.setBodySrc('enterprise.html');"><i class="fa fa-info-circle"></i> 企业基本信息
+									</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('enterpriseEdit.html');"><i class="fa fa-edit"></i> 编辑企业信息
+									</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('enterpriseBranch.html');"><i class="fa fa-building-o"></i> 企业分部信息
+									</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('enterpriseBranchSave.html');"><i class="fa fa-plus-circle"></i> 添加分部信息</a>
+								</dd>
+							</dl>
+						</li>
+						<li id="teacherLi" class="layui-nav-item">
+							<a href="javascript:;"><i class="fa fa-user-o"></i> 师资管理</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:window.setBodySrc('teacher.html');"><i class="fa fa-user-circle-o"></i> 师资力量
+									</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('teacherSave.html');"><i class="fa fa-plus-circle"></i> 添加老师
+									</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('teacherImage.html');"><i class="fa fa-file-picture-o"></i> 师资首页图片
+									</a>
+								</dd>
+							</dl>
+						</li>
+						<li id="lessonLi" class="layui-nav-item">
+							<a class="" href="javascript:;"><i class="fa fa-book"></i> 课程管理</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:window.setBodySrc('lesson.html');"><i class="fa fa-tasks"></i> 课程信息</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('lessonSave.html');"><i class="fa fa-plus-circle"></i> 添加课程
+									</a>
+								</dd>
+							</dl>
+						</li>
+						<li id="freeListenLi" class="layui-nav-item">
+							<a class="" href="javascript:;"><i class="fa fa-calendar"></i> 预约管理</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:window.setBodySrc('freeListen.html');"><i class="fa fa-server"></i> 预约课程信息</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('freeListenSave.html');"><i class="fa fa-plus-circle"></i> 添加试听课
+									</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('freeListenAppointment.html');"><i class="fa fa-check-square-o"></i> 预约处理</a>
+								</dd>
+							</dl>
+						</li>
+						<li id="orderLi" class="layui-nav-item">
+							<a class="" href="javascript:;"><i class="fa fa-reorder"></i> 订单管理</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:window.setBodySrc('order.html');"><i class="fa fa-list-ul"></i> 订单查询</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('orderRefund.html');"><i class="fa fa-reply"></i> 退款处理</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('orderVerification.html');"><i class="fa fa-check"></i> 订单核销
+									</a>
+								</dd>
+							</dl>
+						</li>
+						<li id="momentLi" class="layui-nav-item">
+							<a class="" href="javascript:;"><i class="fa fa-comments"></i> 朋友圈管理</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:window.setBodySrc('moment.html');"><i class="fa fa-list-ol"></i> 朋友圈信息列表</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('momentPost.html');"><i class="fa fa-plus"></i> 朋友圈发布信息</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('momentComment.html');"><i class="fa fa-commenting-o"></i> 朋友圈评论管理
+									</a>
+								</dd>
+								<dd>
+									<a href="javascript:window.setBodySrc('momentImage.html');"><i class="fa fa-file-image-o"></i> 朋友圈首页图片
+									</a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- /sidebar -->
+
+			<!-- main content -->
+			<div class="layui-body">
+				<iframe id="body2" name="body2" src="main.html" frameborder="0" style="padding: 0px; width: 100%; height: 3000px;" scrolling="no"></iframe>
+			</div>
+			<!-- /main content -->
+
+			<!-- footer -->
+			<div class="layui-footer">
+				<!-- 底部固定区域 -->
+				© 2018 www.tainai.ltd - MIT license </div>
+			<!-- /footer -->
+
+		</div>
+		<!-- /body -->
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../js/urlParameter.js"></script>
+		<script>
+			layui.use('element', function() {
+				var element = layui.element;
+				sessionStorage.setItem("qid", $.getUrlParam("qid"));
+
+				$.ajax({
+					url: "/neueduAdministrator/user/UserHandler_findUsername",
+					type: "post",
+					dataType: "json",
+					success: function(data) {
+						console.log("......displayUsername......")
+						console.log(data);
+						$("#displayUsername").append(data.username);
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+			})
+		</script>
+		<script>
+			function setBodySrc(newsrc) {
+				console.log(newsrc);
+				document.getElementById('body2').src = newsrc;
+			}
+
+			function setThisSrc(newsrc) {
+				console.log(newsrc);
+				window.location.href = newsrc;
+			}
+		</script>
+
+	</body>
+
+</html>

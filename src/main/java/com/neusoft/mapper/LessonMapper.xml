@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.mapper.LessonMapper">
+    
+    
+    <select id="findAll" parameterType="Integer" resultType="com.neusoft.bean.Lesson">
+        select * from lesson where qid = #{qid} and `show` = 1
+    </select>
+    <select id="findLessonById" parameterType="Integer" resultType="com.neusoft.bean.Lesson">
+        select * from lesson where lid=#{lid}
+    </select>
+    <insert id="saveLesson" parameterType="com.neusoft.bean.Lesson">
+        insert into lesson (lname,imgurl,lprice,ldesc,category,qid,pubtime,`show`)
+        values(#{lname}, #{imgurl},#{lprice},#{ldesc},#{category},#{qid}, now(),1)
+        <selectKey keyProperty="lid" order="AFTER" resultType="int">
+            select LAST_INSERT_ID()
+     	</selectKey>
+    </insert>
+    <select id ="findAllCategory" parameterType = "int" resultType = "String">
+    	select distinct category
+    	from lesson
+    	where qid = #{qid} and `show` = 1
+    </select>
+    <update id="updateLesson" parameterType="com.neusoft.bean.Lesson">
+        update lesson 
+        set lname = #{lname}, imgurl = #{imgurl}, lprice = #{lprice},
+        	ldesc = #{ldesc}, category = #{category}
+        where lid = #{lid}
+    </update>
+    <update id = "deleteLesson" parameterType = "int">
+    	update lesson
+    	set `show` = 0
+    	where lid = #{lid}
+    </update>
+    
+</mapper>

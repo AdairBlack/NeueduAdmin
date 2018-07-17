@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;">
+			<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a> <a>课程管理</a><a href="lesson.html">课程信息</a> <a><cite>修改课程信息</cite></a> </span> </div>
+			<div class="layui-row">
+				<hr class="layui-bg-gray">
+			</div>
+			<form class="layui-form layui-form-pane" action="">
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>课程基本信息</legend>
+					</fieldset>
+				</div>
+				<div class="row">
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">课程名称</label>
+						<div class="layui-input-inline">
+							<input type="text" name="lname" required lay-verify="required" placeholder="请输入课程名称" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">课程价钱</label>
+						<div class="layui-input-inline">
+							<input type="text" name="lprice" required lay-verify="required" placeholder="请输入课程价格" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">课程类别</label>
+						<div class="layui-input-inline">
+							<input type="text" name="category" required lay-verify="required" placeholder="请输入课程类别" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">分部选择</label>
+						<div class="layui-input-block" id="branchSelect">
+						</div>
+					</div>
+				</div>
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>课程图片</legend>
+					</fieldset>
+				</div>
+				<div class="layui-row">
+					<div class="layui-upload">
+						<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;"> 预览图：
+							<div class="layui-upload-list" id="imagesPreview"></div>
+						</blockquote>
+						<button type="button" class="layui-btn" id="imagesChoose"><i class="fa fa-file-image-o"></i> 选择图片</button>
+						<button class="layui-btn layui-btn-primary" lay-submit lay-filter="imageReset"><i class="fa fa-recycle"></i> 重置图片</button>
+					</div>
+				</div>
+				<div class="layui-row">
+					<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+						<legend>课程详情</legend>
+					</fieldset>
+				</div>
+				<div class="layui-row">
+
+					<div class="layui-form-item layui-form-text">
+						<div class="layui-input-block">
+							<textarea name="content" id="editor" class="layui-textarea" rows="10" cols="20"></textarea>
+						</div>
+					</div>
+					<button class="layui-btn" lay-submit lay-filter="lessonSubmit"><i class="fa fa-cloud-upload"></i> 提交信息</button>
+					<button class="layui-btn layui-btn-primary" lay-submit lay-filter="lessonReset"><i class="fa fa-recycle"></i> 重置信息</button>
+
+				</div>
+			</form>
+		</div>
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../ckeditor/ckeditor.js"></script>
+		<script src="../js/urlParameter.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['element', 'form', 'upload'], function() {
+
+				var element = layui.element,
+					form = layui.form,
+					upload = layui.upload;
+				var imageFile;
+				var branches;
+				var qid = sessionStorage.getItem("qid");
+				var lid = $.getUrlParam("id");
+				var imageFilename;
+
+				var editor = CKEDITOR.replace('editor', {
+					language: 'zh-cn',
+					// Adding drag and drop image upload.
+					filebrowserUploadUrl: '/neueduAdministrator/lesson/LessonHandler_saveEditorImage',
+					removeDialogTabs: 'image:advanced;image:link'
+				});
+
+				var uploadImage = upload.render({
+					elem: '#imagesChoose', //绑定元素
+					url: '', //上传接口
+					accept: "images",
+					acceptMime: "image/*",
+					auto: false,
+					multiple: false,
+					size: 10240,
+					choose: function(obj) {
+						//若传多张图片则会多次调用这个函数
+						obj.preview(function(index, file, result) {
+							imageFile = file;
+							//固定图片长宽
+							$('#imagesPreview').append('<img height="65" width="65" src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+						});
+					},
+					done: function(res) {
+						//上传完毕回调
+					},
+					error: function() {
+						//请求异常回调
+						console.log('here');
+					}
+				});
+
+				$.ajax({
+					url: "/neueduAdministrator/enterprise/EnterpriseHandler_findAllBranch",
+					type: "post",
+					data: {
+						qid: qid
+					},
+					dataType: "json",
+					async : false,
+					success: function(data) {
+						console.log(data)
+						branches = data;
+						for(i = 0; i < data.length; i++) {
+							$("#branchSelect").append('<input type="checkbox" name="branch' + data[i].id + '" title="' + data[i].branch + '">');
+						}
+						form.render('checkbox');
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				$.ajax({
+					url: "/neueduAdministrator/lesson/LessonHandler_findLessonById",
+					type: "post",
+					data: {
+						lid: lid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+						$("input[name=lname]").val(data.lname);
+						$("input[name=lprice]").val(data.lprice);
+						$("input[name=category]").val(data.category);
+						CKEDITOR.instances.editor.setData(data.ldesc);
+						imageFilename = data.imgurl;
+						$('#imagesPreview').append('<img height="65" width="65" src="' + data.imgurl + '" alt="' + data.imgurl + '" class="layui-upload-img">')
+						for(i = 0; i < data.branchs.length; i++) {
+							//$('input[name=branch' + data.branchs[i].id + ']').next().addClass("layui-form-checked");
+							$('input[name=branch' + data.branchs[i].id + ']').attr("checked","");
+						}
+						form.render('checkbox');
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+
+				form.on('submit(lessonSubmit)', function(data) {
+					var formData = new FormData();
+					if($.isEmptyObject(imageFile)) {
+						formData.append("imageChanged", false);
+						formData.append("imageFilename", imageFilename);
+					} else {
+						formData.append("imageChanged", true);
+						formData.append("imageFilename", imageFilename);
+					}
+					formData.append("lid", lid);
+					formData.append("lname", data.field.lname);
+					formData.append("lprice", data.field.lprice);
+					formData.append("category", data.field.category);
+					formData.append("ldesc", CKEDITOR.instances.editor.getData());
+					for(i = 0; i < branches.length; i++) {
+						if($('input[name=branch' + branches[i].id + ']').next().hasClass("layui-form-checked")) {
+							formData.append("branchId", branches[i].id);
+						}
+					}
+					formData.append("image", imageFile);
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/lesson/LessonHandler_updateLesson",
+						data: formData,
+						processData: false,
+						contentType: false,
+						dataType: "json",
+						success: function(data) {
+							alert(data.result);
+						}
+					});
+
+					return false;
+				});
+
+				form.on('submit(imageReset)', function(data) {
+					$("#imagesPreview").empty();
+					imageFile = null;
+					return false;
+				})
+
+				form.on('submit(lessonReset)', function(data) {
+					CKEDITOR.instances.editor.setData("");
+					$("#imagesPreview").empty();
+					imageFile = null;
+					$('input[name*=branch]').next().removeClass("layui-form-checked");
+					$('input[name=lname]').val("");
+					$('input[name=lprice]').val("");
+					$('input[name=category]').val("");
+
+					return false;
+				})
+
+			});
+
+			// for Debug
+			//			function sleep(numberMillis) {
+			//				var now = new Date();
+			//				var exitTime = now.getTime() + numberMillis;
+			//				while(true) {
+			//					now = new Date();
+			//					if(now.getTime() > exitTime)
+			//						return;
+			//				}
+			//			}
+		</script>
+	</body>
+
+</html>

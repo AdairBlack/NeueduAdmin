@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Terminator</title>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body class="layui-layout-body">
+
+		
+
+
+				<!-- 内容主体区域 -->
+				<div style="padding: 15px;">
+					<div class="layui-row"> <span class="layui-breadcrumb"> <a href="javascript:parent.window.setThisSrc('../index.html');">首页</a> <a href="#">朋友圈管理</a> <a><cite>朋友圈编辑消息</cite></a> </span> </div>
+					<div class="layui-row">
+						<hr class="layui-bg-gray">
+					</div>
+					<form class="layui-form layui-form-pane" action="">
+					<div class="layui-row">
+						<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+							<legend>文字信息</legend>
+						</fieldset>
+					</div>
+					<div class="layui-row">
+						
+							<div class="layui-form-item layui-form-text">
+
+								<label class="layui-form-label">文字信息</label>
+
+								<div class="layui-input-block">
+									<textarea id = "mtitle" name="messageTitle" lay-verify="required"  placeholder="请输入文字信息" class="layui-textarea"></textarea>
+								</div>
+
+							</div>
+						
+					</div>
+					<div class="layui-row">
+						<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+							<legend>消息图片</legend>
+						</fieldset>
+					</div>
+					<div class="layui-row">
+						<div class="layui-upload">
+							<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;"> 预览图：
+								<div class="layui-upload-list" id="imagesPreview"></div>
+							</blockquote>
+							<button type="button" class="layui-btn layui-btn-primary" id="imagesChoose"><i class="fa fa-file-image-o"></i> 选择图片</button>
+							<button class="layui-btn layui-btn-primary" lay-submit lay-filter="imageReset"><i class="fa fa-recycle"></i> 重置图片</button>
+							
+						</div>
+					</div>
+					<div class="layui-row">
+						<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+							<legend>信息操作</legend>
+						</fieldset>
+					</div>
+					<div class="layui-row">
+						<button type="button" class="layui-btn"  lay-submit lay-filter="messageSubmit"><i class="fa fa-cloud-upload"></i> 提交信息</button>
+						<button class="layui-btn layui-btn-primary" lay-submit lay-filter="messageReset"><i class="fa fa-recycle"></i> 重置全部</button>
+						
+					</div>
+					</form>
+				</div>
+
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../js/urlParameter.js"></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['element', 'form', 'upload'], function() {
+				var element = layui.element,
+					form = layui.form,
+					upload = layui.upload;
+				var mid = $.getUrlParam("id");
+				var images = [];
+				var imageCount = 0;
+				var qid = sessionStorage.getItem("qid");
+				var messageImgs = [];
+				
+				var uploadEnterpriseImages = upload.render({
+					elem: '#imagesChoose' //绑定元素
+						,
+					url: '' //上传接口
+						,
+					accept: "images",
+					acceptMime: "image/*",
+					auto: false,
+					bindAction: "",
+					multiple: true,
+					size: 10240,
+					number: 5,
+					choose: function(obj) {
+						obj.preview(function(index, file, result) {
+							images[imageCount] = file;
+							imageCount++;
+							//固定图片长宽
+							$('#imagesPreview').append('<img height="65" width="65" src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+						});
+					},
+					done: function(res) {
+						//上传完毕回调
+					},
+					error: function() {
+						//请求异常回调
+						console.log('here');
+					}
+				});
+				
+				$.ajax({
+					url: "/neueduAdministrator/message/MessageHandler_findMessageById",
+					type: "post",
+					data: {
+						mid: mid
+					},
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+						for(i = 0; i < data.messageImgs.length; i++){
+							messageImgs[i] = data.messageImgs[i].imgurl;
+						}
+						$("#mtitle").val(data.mtitle);
+						for(i = 0; i < data.messageImgs.length; i++){
+							$('#imagesPreview').append('<img height="65" width="65" src="' + data.messageImgs[i].imgurl + '" alt="' + data.messageImgs[i].imgurl + '" class="layui-upload-img">')
+						}
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+				
+				
+				form.on('submit(messageSubmit)', function(data) {
+					var formData = new FormData();
+					
+					if($.isEmptyObject(images)){
+						formData.append("imageChanged", false)
+						formData.append("messageImgFiles", messageImgs)
+					} else {
+						formData.append("imageChanged", true)
+						formData.append("messageImgFiles", messageImgs)
+					}
+					formData.append("mid", mid);
+					formData.append("mtitle", $("#mtitle").val());
+					for(i = 0; i < images.length; i++){
+						formData.append("images", images[i]);
+					}
+					
+					$.ajax({
+						type: "post",
+						url: "/neueduAdministrator/message/MessageHandler_updateMessage",
+						data: formData,
+						processData: false,
+						contentType: false,
+						dataType: "json",
+						success: function(data) {
+							alert(data.result);
+						}
+					});
+					
+					
+					return false;
+				})
+				
+				form.on('submit(imageReset)', function(data) {
+					$("#imagesPreview").empty();
+					images = [];
+					imageCount = 0;
+					console.log(images);
+					return false;
+				})
+				
+				form.on('submit(messageReset)', function(data) {
+					$("#imagesPreview").empty();
+					$("#mtitle").val("");
+					images = [];
+					imageCount = 0;
+					console.log(images);
+					return false;
+				})
+			});
+		</script>
+	</body>
+
+</html>
